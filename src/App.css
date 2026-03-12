@@ -1,0 +1,275 @@
+/* reset + globals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Merriweather', Georgia, serif;
+}
+:root {
+  --bg: #faf0e6;          /* default points to light, overwritten by theme */
+  --text: #4a302a;
+  --text-rgb: 74,48,42;
+  --card-bg: #ffffff;
+  --primary: #bfa87d;
+  --secondary: #3a4e7a;
+  --danger: #8b0000;
+  --shadow: rgba(0,0,0,0.1);
+}
+
+/* light theme: more colorful / pastel accents */
+.light {
+  --bg: #e0f7fa;          /* pale cyan */
+  --text: #37474f;        /* charcoal blue */
+  --text-rgb: 55,71,79;
+  --card-bg: #ffffff;
+  --primary: #ff8a65;     /* coral */
+  --secondary: #4db6ac;   /* teal */
+  --danger: #e57373;      /* soft red */
+  --shadow: rgba(0,0,0,0.1);
+}
+
+/* dark theme remains unchanged */
+.dark {
+  --bg: #2e2b29;
+  --text: #e6e1dc;
+  --text-rgb: 230,225,220;
+  --card-bg: #3b3a36;
+  --shadow: rgba(0,0,0,0.3);
+}
+
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+
+/* layout helpers */
+.app, .app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* navbar */
+.navbar-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow);
+  margin-bottom: 20px;
+  animation: fadeIn 0.6s ease-out;
+}
+.navuba {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-container h1 {
+  font-size: 1.5rem;
+}
+.navbar-container h2 {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.linecenter {
+  letter-spacing: 1px;
+}
+.logout-nav {
+  background: var(--danger);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background .3s;
+}
+.logout-nav:hover {
+  background: #c0392b;
+}
+
+/* quote section */
+.quote-section {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+}
+.quote-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px var(--shadow);
+  max-width: 600px;
+  width: 100%;
+  animation: slideUp 0.6s ease;
+  transition: transform .3s;
+}
+.quote-card:hover {
+  transform: translateY(-3px);
+}
+.quote-text {
+  font-size: 1.6rem;
+  font-style: italic;
+  margin-bottom: 15px;
+  color: var(--text);
+}
+.quote-author {
+  text-align: right;
+  font-size: 1rem;
+  color: rgba(var(--text-rgb, 51,51,51), 0.7);
+}
+
+/* buttons */
+button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .3s, transform .2s;
+}
+button:active {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 24px;
+}
+.btn-primary:hover {
+  background: #ff7043; /* darker coral */
+}
+.btn-secondary {
+  background: var(--secondary);
+  color: #fff;
+  padding: 12px 24px;
+}
+.btn-secondary:hover {
+  background: #388e3c; /* darker teal */
+}
+
+.btn-secondary.liked {
+  background: var(--danger);
+}
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform .2s;
+}
+.btn-delete:hover {
+  transform: scale(1.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform .2s;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+/* liked section */
+.liked-section {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 40px;
+  text-align: center;
+}
+.liked-section h4 {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.liked-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.liked-list li {
+  background: var(--card-bg);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: transform .2s;
+  animation: fadeIn 0.4s ease;
+}
+.liked-list li:hover {
+  transform: translateX(3px);
+}
+.quote-saved-text {
+  font-style: italic;
+  color: var(--text);
+}
+.quote-saved-author {
+  font-size: 0.9rem;
+  color: rgba(var(--text-rgb), 0.7);
+  text-align: right;
+}
+
+/* login */
+.cord {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+}
+.login-card {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.6s ease;
+  color: var(--text);
+}
+.login-card h2 {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 5px var(--shadow);
+}
+
+/* animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

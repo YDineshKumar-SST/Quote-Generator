@@ -1,0 +1,39 @@
+body{
+    background-color: grey;
+    color: white;
+}
+
+.linecenter{
+display: flex;
+color : grey;
+justify-content: center;
+align-items: middle;
+
+}
+nav {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 20px;
+  border: 2px solid black;
+  border-radius: 5cm;
+  background-color: lightcyan;
+  width: 100%;
+}
+
+.maincontent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightcoral;
+  
+}
+.gotocenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+}
+.login-title{
+  color: lightcoral;
+}
